@@ -13,7 +13,7 @@ public class Invoices {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String bill_number;
-    private String chassiss_num;
+    private String chassis_num;
     private String workshop_id;
     private String date_of_booking;
     private String services;  // TODO: Should it be JSON? if so how??
@@ -27,11 +27,11 @@ public class Invoices {
     public void setBill_number(String bill_number) {
         this.bill_number = bill_number;
     }
-    public String getChassiss_num() {
-        return chassiss_num;
+    public String getChassis_num() {
+        return chassis_num;
     }
-    public void setChassiss_num(String chassiss_num) {
-        this.chassiss_num = chassiss_num;
+    public void setChassis_num(String chassiss_num) {
+        this.chassis_num = chassiss_num;
     }
     public String getWorkshop_id() {
         return workshop_id;
@@ -60,7 +60,7 @@ public class Invoices {
 
     public Invoices(String bill_number, String chassiss_num, String workshop_id, String date_of_booking, String services, float total_cost) {
         this.bill_number = bill_number;
-        this.chassiss_num = chassiss_num;
+        this.chassis_num = chassiss_num;
         this.workshop_id = workshop_id;
         this.date_of_booking = date_of_booking;
         this.services = services;
@@ -72,7 +72,7 @@ public class Invoices {
     }
     @Override
     public String toString() {
-        return "Invoices [bill_number=" + bill_number + ", chassiss_num=" + chassiss_num + ", workshop_id="
+        return "Invoices [bill_number=" + bill_number + ", chassiss_num=" + chassis_num + ", workshop_id="
                 + workshop_id + ", date_of_booking=" + date_of_booking + ", services=" + services + ", total_cost="
                 + total_cost + "]";
     }
