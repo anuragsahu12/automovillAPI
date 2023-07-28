@@ -50,6 +50,12 @@ public class Users {
         this.password = password;
         this.is_admin = is_admin;
     }
-    
+    public Users() {
+        super();
+    }
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", name=" + username + ", admin=" + is_admin + "]";
+    } 
 
 }
