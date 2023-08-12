@@ -13,24 +13,21 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    private String username;
+    private String user_name;
     private String password;
     private boolean is_admin;
-   
-   
-   
-   
+
     public String getId() {
         return id;
     }
     public void setId(String id) {
         this.id = id;
     }
-    public String getUsername() {
-        return username;
+    public String getUser_name() {
+        return user_name;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
     public String getPassword() {
         return password;
@@ -44,18 +41,30 @@ public class Users {
     public void setIs_admin(boolean is_admin) {
         this.is_admin = is_admin;
     }
-    public Users(String id, String username, String password, boolean is_admin) {
+
+    public Users(){
+        super();
+    }
+
+    public Users(String id, String user_name, String password, boolean is_admin) {
         this.id = id;
-        this.username = username;
+        this.user_name = user_name;
         this.password = password;
         this.is_admin = is_admin;
     }
-    public Users() {
-        super();
-    }
+    
     @Override
     public String toString() {
-        return "Users [id=" + id + ", name=" + username + ", admin=" + is_admin + "]";
-    } 
+        return "Users [id=" + id + ", user_name=" + user_name + ", password=" + password + ", is_admin=" + is_admin
+                + "]";
+    }
 
+    
+
+    
+   
+   
+   
+   
+    
 }
