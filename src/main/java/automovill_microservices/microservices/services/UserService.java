@@ -9,4 +9,6 @@ import automovill_microservices.microservices.entities.Users;
 @Service
 public interface UserService {
     public List<Users> getUserDetails();
+
+    public Users createUser(Users user);
 }
