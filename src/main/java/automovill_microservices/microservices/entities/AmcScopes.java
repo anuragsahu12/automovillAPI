@@ -16,7 +16,6 @@ public class AmcScopes {
     private String scope_of_work;
     private String details;
     private int frequency;
-    private int TAT;
     
     
     public int getId() {
@@ -49,20 +48,13 @@ public class AmcScopes {
     public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
-    public int getTAT() {
-        return TAT;
-    }
-    public void setTAT(int tAT) {
-        TAT = tAT;
-    }
-    
-    public AmcScopes(int id, int amc_id, String scope_of_work, String details, int frequency, int tAT) {
+
+    public AmcScopes(int id, int amc_id, String scope_of_work, String details, int frequency) {
         this.id = id;
         this.amc_id = amc_id;
         this.scope_of_work = scope_of_work;
         this.details = details;
         this.frequency = frequency;
-        TAT = tAT;
     }
 
     public AmcScopes(){
@@ -72,7 +64,7 @@ public class AmcScopes {
     @Override
     public String toString() {
         return "AmcScopes [id=" + id + ", amc_id=" + amc_id + ", scope_of_work=" + scope_of_work + ", details="
-                + details + ", frequency=" + frequency + ", TAT=" + TAT + "]";
+                + details + ", frequency=" + frequency + "]";
     }
 
     
