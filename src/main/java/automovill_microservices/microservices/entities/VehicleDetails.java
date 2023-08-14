@@ -1,8 +1,7 @@
 package automovill_microservices.microservices.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "vehicle_details")
 public class VehicleDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "chassis_num")
     private String chassis_num;
     private String phone_num;
     private String owner;

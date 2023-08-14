@@ -9,4 +9,5 @@ import automovill_microservices.microservices.entities.VehicleDetails;
 @Service
 public interface VehicleDetailsService {
     public List<VehicleDetails> getVehicleDetails();
+    public VehicleDetails getVehicleDetailsByChassisNum(String chassisNum);
 }
