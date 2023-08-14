@@ -1,6 +1,5 @@
 package automovill_microservices.microservices.config;
 
-import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
