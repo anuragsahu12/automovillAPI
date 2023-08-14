@@ -1,13 +1,11 @@
 package automovill_microservices.microservices.config;
 
 import java.security.Key;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +31,7 @@ public class JwtService {
 
     // Without extra claims
     public String generateToken(UserDetails userDetails) {
-        Collection<? extends GrantedAuthority> role = userDetails.getAuthorities();
-
-        Map<String, Object> extraClaims = new HashMap<>();
-        extraClaims.put("role", role);
-
-        return generateToken(extraClaims, userDetails);
+        return generateToken(new HashMap<>(), userDetails);
     }
 
     // With extra claims
@@ -50,7 +43,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 15))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
