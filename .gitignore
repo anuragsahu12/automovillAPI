@@ -5,7 +5,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-
+*.crt 
+*.pem 
+*.p12
 
 ### STS ###
 .apt_generated
