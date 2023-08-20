@@ -1,6 +1,7 @@
 package automovill_microservices.microservices.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,11 @@ public class BasicDetailsServiceImpl implements BasicDetailsService {
         return basicDetailsRepository.findAll();
     }
 
+    @Override
+    public BasicDetails getBasicDetailsById(String id) {
+        Optional<BasicDetails> optionalBasicDetail = basicDetailsRepository.findById(id);
+        return optionalBasicDetail.orElse(null);
+    }
+    
     
 }

@@ -9,4 +9,5 @@ import automovill_microservices.microservices.entities.BasicDetails;
 @Service
 public interface BasicDetailsService {
     public List<BasicDetails> getBasicDetails();
+    public BasicDetails getBasicDetailsById(String id);
 }
