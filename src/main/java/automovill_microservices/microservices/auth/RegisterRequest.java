@@ -13,7 +13,7 @@ public class RegisterRequest {
 
     private String username;
     private String password;
-    private boolean is_admin;
+    private boolean admin;
 
     
     public String getUsername() {
@@ -28,15 +28,15 @@ public class RegisterRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-    public boolean isAdmin() {
-        return is_admin;
+    public boolean getAdmin() {
+        return admin;
     }
-    public void setAdmin(boolean is_admin) {
-        this.is_admin = is_admin;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
     @Override
     public String toString() {
-        return "RegisterRequest [username=" + username + ", password=" + password + ", is_admin=" + is_admin + "]";
+        return "RegisterRequest [username=" + username + ", password=" + password + ", is_admin=" + admin + "]";
     }
 
 }

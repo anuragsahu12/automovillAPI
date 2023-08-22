@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,6 +31,7 @@ public class Users implements UserDetails {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
 
+    @Column(unique = true)
     private String username;
     private String password;
     private boolean is_admin;

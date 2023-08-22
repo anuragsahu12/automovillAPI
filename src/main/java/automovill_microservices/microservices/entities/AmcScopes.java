@@ -1,11 +1,20 @@
 package automovill_microservices.microservices.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "amc_scopes")
 public class AmcScopes {
@@ -15,61 +24,7 @@ public class AmcScopes {
     private int amc_id;
     private String scope_of_work;
     private String details;
+
     private int frequency;
-    
-    
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public int getAmc_id() {
-        return amc_id;
-    }
-    public void setAmc_id(int amc_id) {
-        this.amc_id = amc_id;
-    }
-    public String getScope_of_work() {
-        return scope_of_work;
-    }
-    public void setScope_of_work(String scope_of_work) {
-        this.scope_of_work = scope_of_work;
-    }
-    public String getDetails() {
-        return details;
-    }
-    public void setDetails(String details) {
-        this.details = details;
-    }
-    public int getFrequency() {
-        return frequency;
-    }
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
-    }
-
-    public AmcScopes(int id, int amc_id, String scope_of_work, String details, int frequency) {
-        this.id = id;
-        this.amc_id = amc_id;
-        this.scope_of_work = scope_of_work;
-        this.details = details;
-        this.frequency = frequency;
-    }
-
-    public AmcScopes(){
-        super();
-    }
-    
-    @Override
-    public String toString() {
-        return "AmcScopes [id=" + id + ", amc_id=" + amc_id + ", scope_of_work=" + scope_of_work + ", details="
-                + details + ", frequency=" + frequency + "]";
-    }
-
-    
-
-    
-    
 
 }

@@ -16,7 +16,7 @@ public class InvoiceController {
     @Autowired
     InvoiceService invoiceService;
 
-    @GetMapping("/getInvoices")
+    @GetMapping("/allInvoices")
     public List<Invoices> getInvoices() {
         return invoiceService.getInvoices();
     }

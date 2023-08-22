@@ -29,10 +29,11 @@ public class AuthenticationService {
         var user = Users.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .is_admin(request.isAdmin())
-                .role(request.isAdmin() ? Role.ADMIN : Role.USER)
+                .is_admin(request.getAdmin())
+                .role(request.getAdmin() ? Role.ADMIN : Role.USER)
                 .build();
         repository.save(user);
+
         
         Collection<? extends GrantedAuthority> role = user.getAuthorities();
 
