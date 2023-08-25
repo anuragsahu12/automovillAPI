@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.entities.VehicleDetails;
+import automovill_microservices.microservices.others.AllBasicDetails;
 import automovill_microservices.microservices.services.VehicleDetailsService;
 import lombok.RequiredArgsConstructor;
 @CrossOrigin(value = "localhost:19000")
@@ -29,14 +30,26 @@ public class VehicleDetailsController {
     }
 
     // Get vehicle details by chassis number
-    @GetMapping("/{chassisNum}")
-    public ResponseEntity<?> getVehicleDetails(@PathVariable String chassisNum) {
-        VehicleDetails vehicleDetails = vehicleDetailsService.getVehicleDetailsByChassisNum(chassisNum);
+    // @GetMapping("/{chassisNum}")
+    // public ResponseEntity<?> getVehicleDetails(@PathVariable String chassisNum) {
+    //     VehicleDetails vehicleDetails = vehicleDetailsService.getVehicleDetailsByChassisNum(chassisNum);
         
-        if (vehicleDetails != null) {
-            return new ResponseEntity<>(vehicleDetails, HttpStatus.OK);
+    //     if (vehicleDetails != null) {
+    //         return new ResponseEntity<>(vehicleDetails, HttpStatus.OK);
+    //     } else {
+    //         return new ResponseEntity<>("Vehicle not found.", HttpStatus.NOT_FOUND);
+    //     }
+    // }
+
+    @GetMapping("/{chassisNum}")
+    public ResponseEntity<AllBasicDetails> getVehicleDetails(@PathVariable String chassisNum) {
+        AllBasicDetails allBasicDetails = vehicleDetailsService.getVehicleDetailsByChassisNum(chassisNum);
+        
+        if (allBasicDetails != null) {
+            return new ResponseEntity<>(allBasicDetails, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Vehicle not found.", HttpStatus.NOT_FOUND);
+            // return new ResponseEntity<> ("Vehicle not found.", HttpStatus.NOT_FOUND);
+            return null;
         }
     }
 }

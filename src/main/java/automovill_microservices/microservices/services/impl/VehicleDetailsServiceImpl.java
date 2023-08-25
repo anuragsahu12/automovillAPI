@@ -6,7 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import automovill_microservices.microservices.entities.Amc;
+import automovill_microservices.microservices.entities.BasicDetails;
 import automovill_microservices.microservices.entities.VehicleDetails;
+import automovill_microservices.microservices.others.AllBasicDetails;
+import automovill_microservices.microservices.repository.AmcRepository;
+import automovill_microservices.microservices.repository.BasicDetailsRepository;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
 import automovill_microservices.microservices.services.VehicleDetailsService;
 
@@ -14,28 +19,55 @@ import automovill_microservices.microservices.services.VehicleDetailsService;
 public class VehicleDetailsServiceImpl implements VehicleDetailsService {
     @Autowired
     private VehicleDetailsRepository vehicleDetailsRepository;
+    @Autowired
+    private BasicDetailsRepository basicDetailsRepository;
+    @Autowired
+    private AmcRepository amcRepository;
 
     public List<VehicleDetails> getVehicleDetails() {
         return vehicleDetailsRepository.findAll();
     }
 
     @Override
-    public VehicleDetails getVehicleDetailsByChassisNum(String chassisNum) {
+    public AllBasicDetails getVehicleDetailsByChassisNum(String chassisNum) {
         Optional<VehicleDetails> optionalVehicle = vehicleDetailsRepository.findById(chassisNum);
+        if (optionalVehicle.isPresent()) {
 
-        if (optionalVehicle != null) {
-            // Dusra kch jisse make, model, amc type, mile jaaye
-            // 1 query se make, model using optionalVehicle.basic_details_id
-            
-            // 1 query for amc_type, using optionalVehicle.amc_id
+            VehicleDetails vehicle = optionalVehicle.get();
+            String basicDetailsId = vehicle.getBasic_details_id();
+            Integer amcID = vehicle.getAmc_id();
 
-            // AllBasicDetails allBasicDetails;
-            return optionalVehicle.orElse(null);
+             Optional<BasicDetails> optionalBasicDetails = basicDetailsRepository.findById(basicDetailsId);
+             Optional<Amc> optionalAmcDetails = amcRepository.findById(amcID);
 
-        }
-        else {
+                if (optionalBasicDetails.isPresent()) {
+                    BasicDetails basicDetails = optionalBasicDetails.get();
+                    Amc amcDetails = optionalAmcDetails.get();
+                    AllBasicDetails allBasicDetails = new AllBasicDetails();
+                    allBasicDetails.setMake(basicDetails.getMake());
+                    allBasicDetails.setModel(basicDetails.getModel());
+                    allBasicDetails.setFuel_type(basicDetails.getFuel_type());
+                    allBasicDetails.setAmc_type(amcDetails.getType());
+
+                    return allBasicDetails;
+                }else{
+                    return null;
+                }
+
+        
+        }else{
             return null;
-        }
+        }   
     }
 
+    // @Override
+    // public VehicleDetails getVehicleDetailsByChassisNum1(String chassisNum) {
+    //     Optional<VehicleDetails> optionalVehicle = vehicleDetailsRepository.findById(chassisNum);      
+    //         return optionalVehicle.orElse(null);
+
+    //     }
+
 }
+
+
+
