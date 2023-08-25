@@ -29,18 +29,6 @@ public class VehicleDetailsController {
         return vehicleDetailsService.getVehicleDetails();
     }
 
-    // Get vehicle details by chassis number
-    // @GetMapping("/{chassisNum}")
-    // public ResponseEntity<?> getVehicleDetails(@PathVariable String chassisNum) {
-    //     VehicleDetails vehicleDetails = vehicleDetailsService.getVehicleDetailsByChassisNum(chassisNum);
-        
-    //     if (vehicleDetails != null) {
-    //         return new ResponseEntity<>(vehicleDetails, HttpStatus.OK);
-    //     } else {
-    //         return new ResponseEntity<>("Vehicle not found.", HttpStatus.NOT_FOUND);
-    //     }
-    // }
-
     @GetMapping("/{chassisNum}")
     public ResponseEntity<AllBasicDetails> getVehicleDetails(@PathVariable String chassisNum) {
         AllBasicDetails allBasicDetails = vehicleDetailsService.getVehicleDetailsByChassisNum(chassisNum);

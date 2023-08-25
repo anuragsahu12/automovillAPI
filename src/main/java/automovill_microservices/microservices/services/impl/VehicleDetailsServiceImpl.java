@@ -72,12 +72,6 @@ public class VehicleDetailsServiceImpl implements VehicleDetailsService {
         }   
     }
 
-    // @Override
-    // public VehicleDetails getVehicleDetailsByChassisNum1(String chassisNum) {
-    //     Optional<VehicleDetails> optionalVehicle = vehicleDetailsRepository.findById(chassisNum);      
-    //         return optionalVehicle.orElse(null);
-
-    //     }
 
 }
 
