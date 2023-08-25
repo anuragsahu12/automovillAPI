@@ -44,10 +44,22 @@ public class VehicleDetailsServiceImpl implements VehicleDetailsService {
                     BasicDetails basicDetails = optionalBasicDetails.get();
                     Amc amcDetails = optionalAmcDetails.get();
                     AllBasicDetails allBasicDetails = new AllBasicDetails();
+                    allBasicDetails.setChassis_num(vehicle.getChassis_num());
+                    allBasicDetails.setPhone_num(vehicle.getPhone_num());
+                    allBasicDetails.setOwner(vehicle.getOwner());
+                    allBasicDetails.setReg_date(vehicle.getReg_date());
+                    allBasicDetails.setWarranty_start(vehicle.getWarranty_start());
+                    allBasicDetails.setWarranty_end(vehicle.getWarranty_end());
+                    allBasicDetails.setAmc_start_date(vehicle.getAmc_start_date());
+                    allBasicDetails.setAmc_end_date(vehicle.getAmc_end_date());
+                    allBasicDetails.setLast_service_date(vehicle.getLast_service_date());
+                    allBasicDetails.setLast_service_km(vehicle.getLast_service_km());
                     allBasicDetails.setMake(basicDetails.getMake());
                     allBasicDetails.setModel(basicDetails.getModel());
                     allBasicDetails.setFuel_type(basicDetails.getFuel_type());
                     allBasicDetails.setAmc_type(amcDetails.getType());
+
+
 
                     return allBasicDetails;
                 }else{
