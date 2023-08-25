@@ -10,6 +10,5 @@ import automovill_microservices.microservices.others.AllBasicDetails;
 @Service
 public interface VehicleDetailsService {
     public List<VehicleDetails> getVehicleDetails();
-    // public VehicleDetails getVehicleDetailsByChassisNum1(String chassisNum);
     public AllBasicDetails getVehicleDetailsByChassisNum(String chassisNum);
 }

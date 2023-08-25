@@ -16,10 +16,8 @@ public class AllBasicDetails {
     private String reg_date;
     private String warranty_start;
     private String warranty_end;
-    // private int amc_id;
     private String amc_start_date;
     private String amc_end_date;
-    // private String basic_details_id;
     private String last_service_date;
     private int last_service_km;
     private String make;
