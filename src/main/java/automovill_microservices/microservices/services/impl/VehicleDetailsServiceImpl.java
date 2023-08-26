@@ -54,6 +54,7 @@ public class VehicleDetailsServiceImpl implements VehicleDetailsService {
                     allBasicDetails.setAmc_end_date(vehicle.getAmc_end_date());
                     allBasicDetails.setLast_service_date(vehicle.getLast_service_date());
                     allBasicDetails.setLast_service_km(vehicle.getLast_service_km());
+                    allBasicDetails.setBasic_details_id(vehicle.getBasic_details_id());
                     allBasicDetails.setMake(basicDetails.getMake());
                     allBasicDetails.setModel(basicDetails.getModel());
                     allBasicDetails.setFuel_type(basicDetails.getFuel_type());

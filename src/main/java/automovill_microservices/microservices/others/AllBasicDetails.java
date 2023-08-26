@@ -20,6 +20,7 @@ public class AllBasicDetails {
     private String amc_end_date;
     private String last_service_date;
     private int last_service_km;
+    private String basic_details_id;
     private String make;
     private String model;
     private String fuel_type;
