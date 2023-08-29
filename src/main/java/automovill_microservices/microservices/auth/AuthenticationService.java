@@ -55,7 +55,7 @@ public class AuthenticationService {
                 .orElseThrow();
 
 
-        System.out.println(user);
+        // System.out.println(user);
 
 
         Collection<? extends GrantedAuthority> role = user.getAuthorities();
@@ -65,7 +65,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(extraClaims, user);
 
 
-        System.out.println(jwtToken);
+        // System.out.println(jwtToken);
 
         
         return AuthenticationResponse.builder()
