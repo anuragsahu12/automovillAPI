@@ -22,4 +22,5 @@ public class AmcScopesController {
     public List<AmcScopes> getAmcScopes(){
         return amcScopesService.getAmcScopes();
     }
+
 }

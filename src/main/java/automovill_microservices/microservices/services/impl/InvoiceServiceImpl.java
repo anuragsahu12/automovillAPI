@@ -57,18 +57,18 @@ public class InvoiceServiceImpl implements InvoiceService {
 
             // Update Scope Values
             for (String scope : request.getAmc_items()) {
-            AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(chassisNum, scope).orElse(null);
-                if (amc != null) {
-                    int currentConsumed = amc.getConsumed();
-                    int frequency = amc.getFrequency();
-                    // System.out.println(amc);
+                AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(chassisNum, scope).orElse(null);
+                    if (amc != null) {
+                        int currentConsumed = amc.getConsumed();
+                        int frequency = amc.getFrequency();
+                        // System.out.println(amc);
 
-                    if(currentConsumed < frequency) {
-                        amc.setConsumed(currentConsumed + 1);
-                        amcAvailabilityRepository.save(amc);
+                        if(currentConsumed < frequency) {
+                            amc.setConsumed(currentConsumed + 1);
+                            amcAvailabilityRepository.save(amc);
+                        }
+                        // System.out.println(amc);
                     }
-                    // System.out.println(amc);
-                }
             }
 
             // Get user id for the concerned workshop
@@ -91,11 +91,13 @@ public class InvoiceServiceImpl implements InvoiceService {
 
             invoiceRepository.save(invoice);
             // System.out.println(invoice);
-        }
 
-        return InvoiceResponse.builder()
+            return InvoiceResponse.builder()
                 .invoice_id(invoiceID)
                 .build();
+        }
+        return null;
+        
     }
 
 }
