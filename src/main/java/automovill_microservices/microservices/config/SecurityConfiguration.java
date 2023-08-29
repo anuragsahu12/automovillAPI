@@ -10,6 +10,16 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static automovill_microservices.microservices.entities.Role.ADMIN;
+import static automovill_microservices.microservices.entities.Permission.ADMIN_CREATE;
+import static automovill_microservices.microservices.entities.Permission.ADMIN_DELETE;
+import static automovill_microservices.microservices.entities.Permission.ADMIN_READ;
+import static automovill_microservices.microservices.entities.Permission.ADMIN_UPDATE;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.PUT;
+import static org.springframework.http.HttpMethod.DELETE;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -24,8 +34,13 @@ public class SecurityConfiguration {
                 http
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/api/v1/auth/**")
+                                                .requestMatchers("/api/v1/auth/authenticate")
                                                 .permitAll()
+                                                .requestMatchers("/api/v1/auth/register").hasRole(ADMIN.name())
+                                                .requestMatchers(GET, "/api/v1/auth/register").hasAuthority(ADMIN_READ.name())
+                                                .requestMatchers(POST, "/api/v1/auth/register").hasAuthority(ADMIN_CREATE.name())
+                                                .requestMatchers(PUT, "/api/v1/auth/register").hasAuthority(ADMIN_UPDATE.name())
+                                                .requestMatchers(DELETE, "/api/v1/auth/register").hasAuthority(ADMIN_DELETE.name())
                                                 .anyRequest()
                                                 .authenticated())
                                 .sessionManagement(sess -> sess
