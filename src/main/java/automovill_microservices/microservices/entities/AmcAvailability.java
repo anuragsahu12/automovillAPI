@@ -1,5 +1,6 @@
 package automovill_microservices.microservices.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,11 +21,13 @@ public class AmcAvailability {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
+    @Column(name = "chassis_num")
+    private String chassisNum;
     
-    private String chassis_num;
-
     private int amc_id;
-    private String scope_of_work;
+
+    @Column(name = "scope_of_work")
+    private String scopeOfWork;
     private String details;
     private int frequency;
     private int consumed;

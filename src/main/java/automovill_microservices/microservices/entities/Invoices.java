@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 public class Invoices {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String bill_number;
     private String chassis_num;
     private String workshop_id;
