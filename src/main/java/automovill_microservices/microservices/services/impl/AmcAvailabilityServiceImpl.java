@@ -22,8 +22,8 @@ public class AmcAvailabilityServiceImpl implements AmcAvailabilityService {
     }
 
     @Override
-    public ScopeResponse getAvailability(ScopeRequest request) {
-        AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(request.getChassis_num(), request.getScope()).orElse(null);
+    public ScopeResponse getAvailability(String chassis_num, String scope) {
+        AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(chassis_num, scope).orElse(null);
 
         if(amc != null) {
             int total = amc.getFrequency();
