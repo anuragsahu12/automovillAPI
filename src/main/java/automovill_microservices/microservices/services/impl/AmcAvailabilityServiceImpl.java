@@ -36,7 +36,10 @@ public class AmcAvailabilityServiceImpl implements AmcAvailabilityService {
                             .build();
 
         }
-        return null;
+        return ScopeResponse.builder()
+                    .available(0)
+                    .total(0)
+                    .build();
     }
 
 
