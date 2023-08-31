@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
-import automovill_microservices.microservices.others.ScopeRequest;
 import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.services.AmcAvailabilityService;
 

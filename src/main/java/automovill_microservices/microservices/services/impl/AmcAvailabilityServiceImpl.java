@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
-import automovill_microservices.microservices.others.ScopeRequest;
 import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.repository.AmcAvailabilityRepository;
 import automovill_microservices.microservices.services.AmcAvailabilityService;
