@@ -22,7 +22,7 @@ public class InvoiceIdGeneratorServiceImpl implements InvoiceIdGeneratorService 
             counter = 1;
         }
         String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        String invoiceID = formattedDate + String.format("%05d", workshopID) + String.format("%04d", counter);
+        String invoiceID = String.format("%05d", workshopID) + formattedDate  + String.format("%04d", counter);
         counter++;
 
         return invoiceID;
