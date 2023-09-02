@@ -12,4 +12,5 @@ import automovill_microservices.microservices.others.ScopeResponse;
 public interface AmcAvailabilityService {
     public List<AmcAvailability> getAmcAvailabilityDetails();
     public ScopeResponse getAvailability(ScopeRequest request);
+    public List<AmcAvailability> getAmcDetailsByChassisNum(String chassisNum);
 }

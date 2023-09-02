@@ -12,4 +12,5 @@ import automovill_microservices.microservices.others.InvoiceResponse;
 public interface InvoiceService {
     public List<Invoices> getInvoices();
     public InvoiceResponse createInvoice(InvoiceRequest request);
+    public List<Invoices> getInvoiceDetailsByChassisNum(String chassisNum);
 }
