@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
-import automovill_microservices.microservices.others.ScopeRequest;
 import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.repository.AmcAvailabilityRepository;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
@@ -26,8 +25,8 @@ public class AmcAvailabilityServiceImpl implements AmcAvailabilityService {
     }
 
     @Override
-    public ScopeResponse getAvailability(ScopeRequest request) {
-        AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(request.getChassis_num(), request.getScope()).orElse(null);
+    public ScopeResponse getAvailability(String chassis_num, String scope) {
+        AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(chassis_num, scope).orElse(null);
 
         if(amc != null) {
             int total = amc.getFrequency();
@@ -40,7 +39,10 @@ public class AmcAvailabilityServiceImpl implements AmcAvailabilityService {
                             .build();
 
         }
-        return null;
+        return ScopeResponse.builder()
+                    .available(0)
+                    .total(0)
+                    .build();
     }
 
     @Override

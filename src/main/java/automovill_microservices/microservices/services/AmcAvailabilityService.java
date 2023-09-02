@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
-import automovill_microservices.microservices.others.ScopeRequest;
 import automovill_microservices.microservices.others.ScopeResponse;
 
 @Service
 public interface AmcAvailabilityService {
     public List<AmcAvailability> getAmcAvailabilityDetails();
-    public ScopeResponse getAvailability(ScopeRequest request);
+    public ScopeResponse getAvailability(String chassis_num, String scope);
     public List<AmcAvailability> getAmcDetailsByChassisNum(String chassisNum);
 }
