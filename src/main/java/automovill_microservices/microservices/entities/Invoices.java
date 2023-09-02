@@ -1,6 +1,7 @@
 package automovill_microservices.microservices.entities;
 
 import automovill_microservices.microservices.others.JsonConverter;
+import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,7 +21,9 @@ public class Invoices {
     
     @Id
     private String bill_number;
-    private String chassis_num;
+
+    @Column(name = "chassis_num")
+    private String chassisNum;
     private String workshop_id;
     private String date_of_booking;
 

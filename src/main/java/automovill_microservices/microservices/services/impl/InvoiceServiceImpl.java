@@ -1,5 +1,6 @@
 package automovill_microservices.microservices.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import automovill_microservices.microservices.entities.AmcAvailability;
 import automovill_microservices.microservices.entities.Invoices;
 import automovill_microservices.microservices.entities.Users;
 import automovill_microservices.microservices.entities.VehicleDetails;
+import automovill_microservices.microservices.others.AmcAvailabilityDetails;
+import automovill_microservices.microservices.others.InvoiceDetailsChassis;
 import automovill_microservices.microservices.others.InvoiceRequest;
 import automovill_microservices.microservices.others.InvoiceResponse;
 import automovill_microservices.microservices.repository.AmcAvailabilityRepository;
@@ -82,7 +85,7 @@ public class InvoiceServiceImpl implements InvoiceService {
             // Create a invoice
             var invoice = Invoices.builder()
                             .bill_number(invoiceID)
-                            .chassis_num(request.getChassis_num())
+                            .chassisNum(request.getChassis_num())
                             .date_of_booking(request.getDate_of_booking())
                             .services(request.getServices())
                             .total_cost(request.getTotal_cost())
@@ -99,5 +102,26 @@ public class InvoiceServiceImpl implements InvoiceService {
         return null;
         
     }
+
+    @Override
+    public List<InvoiceDetailsChassis> getInvoiceDetailsByChassisNum(String chassisNum) {
+        List<Invoices> invoicesList = invoiceRepository.findByChassisNum(chassisNum);
+
+        List<InvoiceDetailsChassis> invoices = new ArrayList<>();
+
+        for(Invoices invoice : invoicesList) {
+            InvoiceDetailsChassis tempInv = InvoiceDetailsChassis.builder()
+                                                    .bill_number(invoice.getBill_number())
+                                                    .date_of_booking(invoice.getDate_of_booking())
+                                                    .total_cost(invoice.getTotal_cost())
+                                                    .services(invoice.getServices())
+                                                    .build();
+            
+            invoices.add(tempInv);
+        }
+        return invoices;
+    }
+
+    
 
 }

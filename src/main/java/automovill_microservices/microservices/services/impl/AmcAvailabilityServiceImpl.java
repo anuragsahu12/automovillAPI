@@ -1,5 +1,6 @@
 package automovill_microservices.microservices.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
+import automovill_microservices.microservices.others.AmcAvailabilityDetails;
 import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.repository.AmcAvailabilityRepository;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
@@ -46,8 +48,23 @@ public class AmcAvailabilityServiceImpl implements AmcAvailabilityService {
     }
 
     @Override
-    public List<AmcAvailability> getAmcDetailsByChassisNum(String chassisNum) {
-        return amcAvailabilityRepository.findByChassisNum(chassisNum);
+    public List<AmcAvailabilityDetails> getAmcDetailsByChassisNum(String chassisNum) {
+
+        List<AmcAvailability> amcAvailabilityDetailsList = amcAvailabilityRepository.findByChassisNum(chassisNum);
+
+        List<AmcAvailabilityDetails> amcDetails = new ArrayList<>();
+
+        for(AmcAvailability amc : amcAvailabilityDetailsList) {
+            AmcAvailabilityDetails tempAmc = AmcAvailabilityDetails.builder()
+                                                    .scopeOfWork(amc.getScopeOfWork())
+                                                    .details(amc.getDetails())
+                                                    .frequency(amc.getFrequency())
+                                                    .build();
+            
+            amcDetails.add(tempAmc);
+        }
+        return amcDetails;
+
     }
         
         

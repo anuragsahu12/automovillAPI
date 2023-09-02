@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.entities.AmcAvailability;
-
+import automovill_microservices.microservices.others.AmcAvailabilityDetails;
 import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.services.AmcAvailabilityService;
 
@@ -38,7 +38,7 @@ public class AmcAvailabilityController {
     }
 
     @GetMapping("/{chassisNum}")
-    public List<AmcAvailability> getAmcDetailsByChassisNum(@PathVariable String chassisNum){
+    public List<AmcAvailabilityDetails> getAmcDetailsByChassisNum(@PathVariable String chassisNum){
         return amcAvailabilityService.getAmcDetailsByChassisNum(chassisNum);
     }
 }

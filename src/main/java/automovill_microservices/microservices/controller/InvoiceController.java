@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.entities.Invoices;
+import automovill_microservices.microservices.others.AmcAvailabilityDetails;
+import automovill_microservices.microservices.others.InvoiceDetailsChassis;
 import automovill_microservices.microservices.others.InvoiceRequest;
 import automovill_microservices.microservices.others.InvoiceResponse;
 import automovill_microservices.microservices.services.InvoiceService;
@@ -37,4 +40,11 @@ public class InvoiceController {
     ) {
         return ResponseEntity.ok(invoiceService.createInvoice(request));
     }
+    
+
+    @GetMapping("/{chassisNum}")
+    public List<InvoiceDetailsChassis> getInvoicesByChassisNum(@PathVariable String chassisNum){
+        return invoiceService.getInvoiceDetailsByChassisNum(chassisNum);
+    }
 }
+
