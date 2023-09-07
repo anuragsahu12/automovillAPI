@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.entities.Invoices;
-import automovill_microservices.microservices.others.AmcAvailabilityDetails;
 import automovill_microservices.microservices.others.InvoiceDetailsChassis;
 import automovill_microservices.microservices.others.InvoiceRequest;
 import automovill_microservices.microservices.others.InvoiceResponse;

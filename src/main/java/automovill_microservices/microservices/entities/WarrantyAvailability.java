@@ -16,20 +16,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "amc_scopes")
-public class AmcScopes {
+@Table(name = "warranty_availability")
+public class WarrantyAvailability {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(name = "amc_id")
-    private int amcId;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Integer id;
+    @Column(name = "chassis_num")
+    private String chassisNum;
+    
+    private int warranty_id;
 
     @Column(name = "scope_of_work")
     private String scopeOfWork;
-    
     private String details;
-
     private int frequency;
-
+    private int consumed;
 }
