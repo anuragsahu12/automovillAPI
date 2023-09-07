@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import automovill_microservices.microservices.entities.WarrantyAvailability;
-import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.others.WarrantyAvailabilityDetails;
+import automovill_microservices.microservices.others.WarrantyScopesResponse;
 
 @Service
 public interface WarrantyAvailabilityService {
-    public List<WarrantyAvailability> getAmcAvailabilityDetails();
-    public ScopeResponse getAvailability(String chassis_num, String scope);
-    public List<WarrantyAvailabilityDetails> getAmcDetailsByChassisNum(String chassisNum);
+    public List<WarrantyAvailability> getWarrantyAvailabilityDetails();
+    public WarrantyScopesResponse getAvailability(String chassis_num, String scope);
+    public List<WarrantyAvailabilityDetails> getWarrantyDetailsByChassisNum(String chassisNum);
 }

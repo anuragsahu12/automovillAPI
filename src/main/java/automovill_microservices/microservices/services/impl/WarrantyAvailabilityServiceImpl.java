@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 
 import automovill_microservices.microservices.entities.WarrantyAvailability;
-import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.others.WarrantyAvailabilityDetails;
+import automovill_microservices.microservices.others.WarrantyScopesResponse;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
 import automovill_microservices.microservices.repository.WarrantyAvailabilityRepository;
 import automovill_microservices.microservices.services.WarrantyAvailabilityService;
@@ -22,12 +22,12 @@ public class WarrantyAvailabilityServiceImpl implements WarrantyAvailabilityServ
     VehicleDetailsRepository vehicleDetailsRepository;
 
     @Override
-    public List<WarrantyAvailability> getAmcAvailabilityDetails(){
+    public List<WarrantyAvailability> getWarrantyAvailabilityDetails(){
         return warrantyAvailabilityRepository.findAll();
     }
 
     @Override
-    public ScopeResponse getAvailability(String chassis_num, String scope) {
+    public WarrantyScopesResponse getAvailability(String chassis_num, String scope) {
         WarrantyAvailability warranty = warrantyAvailabilityRepository.findByChassisNumAndScopeOfWork(chassis_num, scope).orElse(null);
 
         if(warranty != null) {
@@ -35,20 +35,20 @@ public class WarrantyAvailabilityServiceImpl implements WarrantyAvailabilityServ
             int consumed = warranty.getConsumed();
             int available = total - consumed;
 
-            return  ScopeResponse.builder()
+            return  WarrantyScopesResponse.builder()
                             .available(available)
                             .total(total)
                             .build();
 
         }
-        return ScopeResponse.builder()
+        return WarrantyScopesResponse.builder()
                     .available(0)
                     .total(0)
                     .build();
     }
 
     @Override
-    public List<WarrantyAvailabilityDetails> getAmcDetailsByChassisNum(String chassisNum) {
+    public List<WarrantyAvailabilityDetails> getWarrantyDetailsByChassisNum(String chassisNum) {
 
         List<WarrantyAvailability> warrantyAvailabilityDetailsList = warrantyAvailabilityRepository.findByChassisNum(chassisNum);
 
