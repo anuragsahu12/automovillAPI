@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import automovill_microservices.microservices.entities.WarrantyAvailability;
-import automovill_microservices.microservices.others.ScopeResponse;
 import automovill_microservices.microservices.others.WarrantyAvailabilityDetails;
+import automovill_microservices.microservices.others.WarrantyScopesResponse;
 import automovill_microservices.microservices.services.WarrantyAvailabilityService;
 
 @RestController
@@ -23,13 +23,13 @@ public class WarrantyAvailabilityController {
     WarrantyAvailabilityService warrantyAvailabilityService;
 
     @GetMapping("/all")
-    public List<WarrantyAvailability> getAmcAvailabilityDetails(){
-        return warrantyAvailabilityService.getAmcAvailabilityDetails();
+    public List<WarrantyAvailability> getWarrantyAvailabilityDetails(){
+        return warrantyAvailabilityService.getWarrantyAvailabilityDetails();
     }
 
 
     @GetMapping("/availability")
-    public ResponseEntity<ScopeResponse> getAvailability(
+    public ResponseEntity<WarrantyScopesResponse> getAvailability(
         @RequestParam("chassis_num") String chassis_num,
         @RequestParam("scope") String scope
     ) {
@@ -37,7 +37,7 @@ public class WarrantyAvailabilityController {
     }
 
     @GetMapping("/{chassisNum}")
-    public List<WarrantyAvailabilityDetails> getAmcDetailsByChassisNum(@PathVariable String chassisNum){
-        return warrantyAvailabilityService.getAmcDetailsByChassisNum(chassisNum);
+    public List<WarrantyAvailabilityDetails> getWarrantyDetailsByChassisNum(@PathVariable String chassisNum){
+        return warrantyAvailabilityService.getWarrantyDetailsByChassisNum(chassisNum);
     }
 }
