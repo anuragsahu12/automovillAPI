@@ -1,5 +1,6 @@
 package automovill_microservices.microservices.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,8 +21,13 @@ public class WarrantyScopes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int warranty_id;
-    private String scope_of_work;
+
+    @Column(name = "warranty_id")
+    private int warrantyId;
+
+    @Column(name = "scope_of_work")
+    private String scopeOfWork;
+    
     private String details;
 
     private int frequency;

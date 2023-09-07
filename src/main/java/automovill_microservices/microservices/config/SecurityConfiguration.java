@@ -36,6 +36,11 @@ public class SecurityConfiguration {
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers("/api/v1/auth/authenticate")
                                                 .permitAll()
+                                                .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
+                                                .requestMatchers(GET, "/api/v1/admin/**").hasAuthority(ADMIN_READ.name())
+                                                .requestMatchers(POST, "/api/v1/admin/**").hasAuthority(ADMIN_CREATE.name())
+                                                .requestMatchers(PUT, "/api/v1/admin/**").hasAuthority(ADMIN_UPDATE.name())
+                                                .requestMatchers(DELETE, "/api/v1/admin/**").hasAuthority(ADMIN_DELETE.name())
                                                 .requestMatchers("/api/v1/auth/register").hasRole(ADMIN.name())
                                                 .requestMatchers(GET, "/api/v1/auth/register").hasAuthority(ADMIN_READ.name())
                                                 .requestMatchers(POST, "/api/v1/auth/register").hasAuthority(ADMIN_CREATE.name())
