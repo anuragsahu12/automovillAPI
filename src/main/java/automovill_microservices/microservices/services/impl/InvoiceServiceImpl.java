@@ -10,7 +10,6 @@ import automovill_microservices.microservices.entities.AmcAvailability;
 import automovill_microservices.microservices.entities.Invoices;
 import automovill_microservices.microservices.entities.Users;
 import automovill_microservices.microservices.entities.VehicleDetails;
-import automovill_microservices.microservices.others.AmcAvailabilityDetails;
 import automovill_microservices.microservices.others.InvoiceDetailsChassis;
 import automovill_microservices.microservices.others.InvoiceRequest;
 import automovill_microservices.microservices.others.InvoiceResponse;
