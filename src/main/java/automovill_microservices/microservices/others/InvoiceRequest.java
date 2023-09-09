@@ -21,4 +21,5 @@ public class InvoiceRequest {
     private int last_service_km;
     private String last_service_date;
     private List<String> amc_items;
+    private List<String> warranty_items;
 }

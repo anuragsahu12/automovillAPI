@@ -10,6 +10,7 @@ import automovill_microservices.microservices.entities.AmcAvailability;
 import automovill_microservices.microservices.entities.Invoices;
 import automovill_microservices.microservices.entities.Users;
 import automovill_microservices.microservices.entities.VehicleDetails;
+import automovill_microservices.microservices.entities.WarrantyAvailability;
 import automovill_microservices.microservices.others.InvoiceDetailsChassis;
 import automovill_microservices.microservices.others.InvoiceRequest;
 import automovill_microservices.microservices.others.InvoiceResponse;
@@ -17,6 +18,7 @@ import automovill_microservices.microservices.repository.AmcAvailabilityReposito
 import automovill_microservices.microservices.repository.InvoiceRepository;
 import automovill_microservices.microservices.repository.UserRepository;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
+import automovill_microservices.microservices.repository.WarrantyAvailabilityRepository;
 import automovill_microservices.microservices.services.InvoiceIdGeneratorService;
 import automovill_microservices.microservices.services.InvoiceService;
 
@@ -31,6 +33,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Autowired
     AmcAvailabilityRepository amcAvailabilityRepository;
+
+    @Autowired
+    WarrantyAvailabilityRepository warrantyAvailabilityRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -57,7 +62,7 @@ public class InvoiceServiceImpl implements InvoiceService {
             vehicle.setLast_service_date(request.getLast_service_date());
             vehicleDetailsRepository.save(vehicle);
 
-            // Update Scope Values
+            // Update AMC Scope Values
             for (String scope : request.getAmc_items()) {
                 AmcAvailability amc = amcAvailabilityRepository.findByChassisNumAndScopeOfWork(chassisNum, scope).orElse(null);
                     if (amc != null) {
@@ -70,6 +75,22 @@ public class InvoiceServiceImpl implements InvoiceService {
                             amcAvailabilityRepository.save(amc);
                         }
                         // System.out.println(amc);
+                    }
+            }
+
+            // Update AMC Scope Values
+            for (String scope : request.getWarranty_items()) {
+                WarrantyAvailability wty = warrantyAvailabilityRepository.findByChassisNumAndScopeOfWork(chassisNum, scope).orElse(null);
+                    if (wty != null) {
+                        int currentConsumed = wty.getConsumed();
+                        int frequency = wty.getFrequency();
+                        // System.out.println(wty);
+
+                        if(currentConsumed < frequency) {
+                            wty.setConsumed(currentConsumed + 1);
+                            warrantyAvailabilityRepository.save(wty);
+                        }
+                        // System.out.println(wty);
                     }
             }
 
