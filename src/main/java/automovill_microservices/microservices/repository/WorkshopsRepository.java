@@ -6,5 +6,5 @@ import automovill_microservices.microservices.entities.Workshops;
 
 
 public interface WorkshopsRepository extends JpaRepository<Workshops, Integer> {
-
+    Workshops findFirstByName(String name);
 }

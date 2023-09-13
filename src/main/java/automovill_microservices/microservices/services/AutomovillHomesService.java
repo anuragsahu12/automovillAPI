@@ -8,5 +8,6 @@ import automovill_microservices.microservices.entities.AutomovillHomes;
 
 @Service
 public interface AutomovillHomesService {
-   public List<AutomovillHomes> getAllHomes(); 
+   public List<AutomovillHomes> getAllHomes();
+   public AutomovillHomes getByWorkshopId(String workshopId);
 }
