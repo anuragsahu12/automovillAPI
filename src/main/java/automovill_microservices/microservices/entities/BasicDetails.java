@@ -1,5 +1,6 @@
 package automovill_microservices.microservices.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class BasicDetails {
     private String id;
     private String make;
     private String model;
-    private String fuel_type;
+
+    @Column(name = "fuel_type")
+    private String fuelType;
     private String rated_power;
     private String peak_power;
     private String seat_height;

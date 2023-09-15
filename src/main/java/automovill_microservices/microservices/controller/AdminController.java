@@ -21,7 +21,7 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-    @PostMapping("/newVehicle")
+    @PostMapping("/addNewVehicle")
     public void addNewVehicle(
         @RequestBody AddNewVehicleRequest request
     ) {
