@@ -12,13 +12,16 @@ import automovill_microservices.microservices.entities.BasicDetails;
 import automovill_microservices.microservices.entities.VehicleDetails;
 import automovill_microservices.microservices.entities.WarrantyAvailability;
 import automovill_microservices.microservices.entities.WarrantyScopes;
+import automovill_microservices.microservices.entities.Workshops;
 import automovill_microservices.microservices.others.AddNewVehicleRequest;
+import automovill_microservices.microservices.others.AddNewWorkshopRequest;
 import automovill_microservices.microservices.repository.AmcAvailabilityRepository;
 import automovill_microservices.microservices.repository.AmcScopesRepository;
 import automovill_microservices.microservices.repository.BasicDetailsRepository;
 import automovill_microservices.microservices.repository.VehicleDetailsRepository;
 import automovill_microservices.microservices.repository.WarrantyAvailabilityRepository;
 import automovill_microservices.microservices.repository.WarrantyScopesRepository;
+import automovill_microservices.microservices.repository.WorkshopsRepository;
 import automovill_microservices.microservices.services.AdminService;
 
 @Service
@@ -42,6 +45,9 @@ public class AdminServiceImpl implements AdminService{
     @Autowired
     AmcAvailabilityRepository amcAvailabilityRepository;
 
+    @Autowired
+    WorkshopsRepository workshopsRepository;
+
 
     @Override
     public void initializeNewVehicleData(AddNewVehicleRequest request) {
@@ -56,8 +62,8 @@ public class AdminServiceImpl implements AdminService{
         // Get basic-details-id using make, model and fuelType
         BasicDetails basicDetails = basicDetailsRepository.findFirstByMakeAndModelAndFuelType(make, model, fuelType);
 
-        // System.out.println(basicDetails);
 
+        // Create a new vehicle to add
         VehicleDetails newVehicle = VehicleDetails.builder()
                                         .chassis_num(chassisNum)
                                         .phone_num(request.getPhone_number())
@@ -76,9 +82,9 @@ public class AdminServiceImpl implements AdminService{
         vehicleDetailsRepository.save(newVehicle);
 
 
-
         List<WarrantyScopes> scopesWarranty = warrantyScopesRepository.findByWarrantyId(warrantyId);
         List<AmcScopes> scopesAmc = amcScopesRepository.findByAmcId(amcId);
+
 
         // Add warranty scopes
         for(WarrantyScopes scope : scopesWarranty) {
@@ -94,6 +100,7 @@ public class AdminServiceImpl implements AdminService{
             warrantyAvailabilityRepository.save(temp);               
         }
         
+
         // Add AMC scopes
         for(AmcScopes scope : scopesAmc) {
             AmcAvailability temp = AmcAvailability.builder()
@@ -108,4 +115,23 @@ public class AdminServiceImpl implements AdminService{
             amcAvailabilityRepository.save(temp);               
         }
     }
+
+
+    @Override
+    public void initializeNewWorkshop(AddNewWorkshopRequest request) {
+        Workshops newWorkshop = Workshops.builder()
+                                    .state(request.getState())
+                                    .name(request.getName())
+                                    .pin(request.getPin())
+                                    .address(request.getAddress())
+                                    .pin(request.getPin())
+                                    .contact(request.getContact())
+                                    .build();
+
+        workshopsRepository.save(newWorkshop);
+    }
+
+
+
+    
 }

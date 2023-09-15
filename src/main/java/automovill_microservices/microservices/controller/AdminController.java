@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import automovill_microservices.microservices.others.AddNewVehicleRequest;
+import automovill_microservices.microservices.others.AddNewWorkshopRequest;
 import automovill_microservices.microservices.services.AdminService;
 
 
@@ -34,4 +35,18 @@ public class AdminController {
             return new ResponseEntity<String>("Failed", HttpStatus.BAD_REQUEST);
         }
     }
+    @PostMapping("/addNewWorkshop")
+    public ResponseEntity<String> addNewWorkshop(
+        @RequestBody AddNewWorkshopRequest request
+    ) {
+        try {
+            adminService.initializeNewWorkshop(request);
+            return new ResponseEntity<String>("Added Successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("Failed, recheck you data.", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }
