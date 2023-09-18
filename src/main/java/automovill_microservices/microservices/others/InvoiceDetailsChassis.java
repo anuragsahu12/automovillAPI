@@ -16,5 +16,6 @@ public class InvoiceDetailsChassis {
     private Object services;
     private float total_cost;
     private String workshop_id;
+    private int distance_travelled;
 }
 

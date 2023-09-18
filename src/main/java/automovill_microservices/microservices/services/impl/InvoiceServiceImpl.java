@@ -110,6 +110,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                             .services(request.getServices())
                             .total_cost(request.getTotal_cost())
                             .workshop_id(request.getWorkshop_id())
+                            .distanceTravelled(request.getLast_service_km())
                             .build();
 
             invoiceRepository.save(invoice);
@@ -136,6 +137,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                                                     .total_cost(invoice.getTotal_cost())
                                                     .services(invoice.getServices())
                                                     .workshop_id(invoice.getWorkshop_id())
+                                                    .distance_travelled(invoice.getDistanceTravelled())
                                                     .build();
             
             invoices.add(tempInv);

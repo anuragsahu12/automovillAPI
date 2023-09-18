@@ -35,5 +35,7 @@ public class Invoices {
 
     private float total_cost;
 
-    
+    @Column(name = "distance_travelled")
+    private int distanceTravelled;
+
 }
