@@ -2,6 +2,7 @@ package automovill_microservices.microservices.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -142,6 +143,10 @@ public class InvoiceServiceImpl implements InvoiceService {
             
             invoices.add(tempInv);
         }
+
+        // Sort the invoices
+        Collections.sort(invoices);
+
         return invoices;
     }
 

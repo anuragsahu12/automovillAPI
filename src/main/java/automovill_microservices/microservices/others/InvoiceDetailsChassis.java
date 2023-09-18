@@ -1,6 +1,5 @@
 package automovill_microservices.microservices.others;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class InvoiceDetailsChassis implements Comparable<InvoiceDetailsChassis>{
+public class InvoiceDetailsChassis implements Comparable<InvoiceDetailsChassis> {
     private String bill_number;
     private String date_of_booking;
     private Object services;
@@ -20,8 +19,8 @@ public class InvoiceDetailsChassis implements Comparable<InvoiceDetailsChassis>{
 
     @Override
     public int compareTo(InvoiceDetailsChassis other) {
-        return this.date_of_booking.compareTo(other.date_of_booking);
+        // Compare invoices based on their date_of_booking in descending order
+        return other.date_of_booking.compareTo(this.date_of_booking);
     }
 
 }
-
