@@ -1,6 +1,8 @@
 package automovill_microservices.microservices.entities;
 
-import automovill_microservices.microservices.others.JsonConverter;
+import java.util.List;
+
+import automovill_microservices.microservices.others.JsonArrayConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -27,8 +29,9 @@ public class Invoices {
     private String workshop_id;
     private String date_of_booking;
 
-    @Convert(converter = JsonConverter.class)
-    private Object services;
+    @Convert(converter = JsonArrayConverter.class)
+    @Column(length = 1500)
+    private List<Object> services;
 
     private float total_cost;
 

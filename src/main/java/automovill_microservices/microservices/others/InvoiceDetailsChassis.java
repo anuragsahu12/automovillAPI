@@ -15,5 +15,6 @@ public class InvoiceDetailsChassis {
     private String date_of_booking;
     private Object services;
     private float total_cost;
+    private String workshop_id;
 }
 

@@ -1,16 +1,19 @@
 package automovill_microservices.microservices.others;
 
+import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class JsonConverter implements AttributeConverter<Object, String> {
+public class JsonArrayConverter implements AttributeConverter<List<Object>, String> {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String convertToDatabaseColumn(Object attribute) {
+    public String convertToDatabaseColumn(List<Object> attribute) {
         try {
             return objectMapper.writeValueAsString(attribute);
         } catch (Exception e) {
@@ -20,9 +23,9 @@ public class JsonConverter implements AttributeConverter<Object, String> {
     }
 
     @Override
-    public Object convertToEntityAttribute(String dbData) {
+    public List<Object> convertToEntityAttribute(String dbData) {
         try {
-            return objectMapper.readValue(dbData, Object.class);
+            return objectMapper.readValue(dbData, new TypeReference<List<Object>>() {});
         } catch (Exception e) {
             // Handle the exception
             return null;

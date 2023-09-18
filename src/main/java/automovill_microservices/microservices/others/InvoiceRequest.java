@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class InvoiceRequest {
     private String chassis_num;
     private String date_of_booking;
-    private Object services;
+    private List<Object> services;
     private float total_cost;
     private String workshop_id;
     private int last_service_km;

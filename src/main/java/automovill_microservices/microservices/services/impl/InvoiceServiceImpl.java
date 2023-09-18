@@ -135,6 +135,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                                                     .date_of_booking(invoice.getDate_of_booking())
                                                     .total_cost(invoice.getTotal_cost())
                                                     .services(invoice.getServices())
+                                                    .workshop_id(invoice.getWorkshop_id())
                                                     .build();
             
             invoices.add(tempInv);
